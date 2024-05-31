@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Username
-                Text(
+                const Text(
                   'Said Dani',
                   style: TextStyle(color: Colors.black45, fontSize: 20),
                 ),
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
                   ),
                   // heading text
                   const Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: 10),
                     child: Text(
                       'Contact Lost with Air Boeing 737-500 After Take Off',
                       style: TextStyle(
@@ -119,6 +119,86 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 25,
+            ),
+            // filters
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'All',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  'Palestine',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  'Media',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  'Magazine',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  'Business',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+
+            // blogs
+            Container(
+              child: ListView(
+                children: [
+                  Container(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            // thumbnail
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(
+                                'assets/images/nuclear_f.jpg',
+                                width: 150,
+                                height: 150,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            // title
+                            const Text(
+                              'Qardho town fights to save its nuclear',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black45,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
