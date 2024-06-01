@@ -1,6 +1,6 @@
+// ignore_for_file: avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,18 +8,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text(
-      //     'BBC',
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //       fontWeight: FontWeight.w600,
-      //       fontSize: 30,
-      //     ),
-      //   ),
-      //   backgroundColor: const Color.fromARGB(255, 219, 28, 14),
-      //   elevation: 0,
-      // ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
         child: Column(
@@ -57,66 +45,71 @@ class HomePage extends StatelessWidget {
             ),
 
             // Main Blog container
-            Container(
-              child: Column(
-                children: [
-                  // thumbnail image
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Image.asset('assets/images/airplane_1.jpg'),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  // heading text
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      'Contact Lost with Air Boeing 737-500 After Take Off',
-                      style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                          color: Color.fromARGB(185, 0, 0, 0),
-                          wordSpacing: 2),
+            GestureDetector(
+              onTap: () {
+                print('Main blog is taped');
+              },
+              child: Container(
+                child: Column(
+                  children: [
+                    // thumbnail image
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset('assets/images/airplane_1.jpg'),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  // user information
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Row(
-                          children: [
-                            // avatar image
-                            CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/profile_image.jpg'),
-                              radius: 17,
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            // username
-                            Text(
-                              'BBC somalia',
-                              style: TextStyle(color: Colors.black54),
-                            ),
-                          ],
-                        ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    // heading text
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Contact Lost with Air Boeing 737-500 After Take Off',
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                            color: Color.fromARGB(185, 0, 0, 0),
+                            wordSpacing: 2),
                       ),
-                      // date posted
-                      Text(
-                        '01 Jun 2024',
-                        style: TextStyle(color: Colors.black54),
-                      )
-                    ],
-                  ),
-                ],
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    // user information
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Row(
+                            children: [
+                              // avatar image
+                              CircleAvatar(
+                                backgroundImage: AssetImage(
+                                    'assets/images/profile_image.jpg'),
+                                radius: 17,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              // username
+                              Text(
+                                'BBC somalia',
+                                style: TextStyle(color: Colors.black54),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // date posted
+                        Text(
+                          '01 Jun 2024',
+                          style: TextStyle(color: Colors.black54),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(
@@ -160,45 +153,256 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-
-            // blogs
+            const SizedBox(
+              height: 10,
+            ),
+            // blog1
             Container(
-              child: ListView(
+              child: Row(
                 children: [
+                  ClipRRect(
+                    // borderRadius: BorderRadius.only(topLeft: Radius.zero),
+                    child: Image.asset(
+                      'assets/images/nuclear_f.jpg',
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
                   Container(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const Text(
+                          'Qardho is build a nuclear station in \n2024 for electrical energy',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 22,
+                        ),
+                        // other
                         Row(
                           children: [
-                            // thumbnail
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(
-                                'assets/images/nuclear_f.jpg',
-                                width: 150,
-                                height: 150,
-                              ),
+                            // calender
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/images/svg/calendar.svg',
+                                  color: Colors.black45,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text(
+                                  '01 Jan 2024',
+                                  style: TextStyle(
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(
-                              width: 10,
+                              width: 20,
                             ),
-                            // title
-                            const Text(
-                              'Qardho town fights to save its nuclear',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black45,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            )
+                            // readers
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/images/svg/time.svg',
+                                  color: Colors.black45,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text(
+                                  '10 min read',
+                                  style: TextStyle(
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
-            )
+            ),
+
+            // blog2
+            Container(
+              child: Row(
+                children: [
+                  ClipRRect(
+                    // borderRadius: BorderRadius.only(topLeft: Radius.zero),
+                    child: Image.asset(
+                      'assets/images/airplane_2.jpg',
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Qardho is build a nuclear station in \n2024 for electrical energy',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 22,
+                        ),
+                        // other
+                        Row(
+                          children: [
+                            // calender
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/images/svg/calendar.svg',
+                                  color: Colors.black45,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text(
+                                  '01 Jan 2024',
+                                  style: TextStyle(
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            // readers
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/images/svg/time.svg',
+                                  color: Colors.black45,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text(
+                                  '10 min read',
+                                  style: TextStyle(
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            // blog3
+            Container(
+              child: Row(
+                children: [
+                  ClipRRect(
+                    // borderRadius: BorderRadius.only(topLeft: Radius.zero),
+                    child: Image.asset(
+                      'assets/images/nuclear.jpg',
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Qardho is build a nuclear station in \n2024 for electrical energy',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 22,
+                        ),
+                        // other
+                        Row(
+                          children: [
+                            // canlender
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/images/svg/calendar.svg',
+                                  color: Colors.black45,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text(
+                                  '01 Jan 2024',
+                                  style: TextStyle(
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            // readers
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/images/svg/time.svg',
+                                  color: Colors.black45,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text(
+                                  '10 min read',
+                                  style: TextStyle(
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
