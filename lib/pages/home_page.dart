@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,403 +8,314 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Username
-                const Text(
-                  'Said Dani',
-                  style: TextStyle(color: Colors.black45, fontSize: 20),
-                ),
-
-                // search icon
-                SvgPicture.asset(
-                  'assets/images/svg/search.svg',
-                  color: Colors.black45,
-                ),
-              ],
-            ),
-
-            const SizedBox(
-              height: 20,
-            ),
-            // Title
-            const Text(
-              'Breaking News',
-              style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(211, 0, 0, 0),
-              ),
-            ),
-
-            // Main Blog container
+            const HeaderSection(),
+            const SizedBox(height: 20),
+            const TitleSection(),
+            const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                print('Main blog is taped');
+                Navigator.pushNamed(context, '/ReadingPage');
               },
-              child: Container(
-                child: Column(
-                  children: [
-                    // thumbnail image
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Image.asset('assets/images/airplane_1.jpg'),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    // heading text
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Contact Lost with Air Boeing 737-500 After Take Off',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
-                            color: Color.fromARGB(185, 0, 0, 0),
-                            wordSpacing: 2),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    // user information
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Row(
-                            children: [
-                              // avatar image
-                              CircleAvatar(
-                                backgroundImage: AssetImage(
-                                    'assets/images/profile_image.jpg'),
-                                radius: 17,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              // username
-                              Text(
-                                'BBC somalia',
-                                style: TextStyle(color: Colors.black54),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // date posted
-                        Text(
-                          '01 Jun 2024',
-                          style: TextStyle(color: Colors.black54),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              child: const MainBlog(),
             ),
-            const SizedBox(
-              height: 25,
-            ),
-            // filters
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'All',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  'Palestine',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  'Media',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  'Magazine',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  'Business',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            // blog1
-            Container(
-              child: Row(
-                children: [
-                  ClipRRect(
-                    // borderRadius: BorderRadius.only(topLeft: Radius.zero),
-                    child: Image.asset(
-                      'assets/images/nuclear_f.jpg',
-                      width: 120,
-                      height: 120,
-                    ),
+            const SizedBox(height: 25),
+            const FilterSection(),
+            const SizedBox(height: 10),
+            Expanded(
+              child: ListView(
+                children: const [
+                  BlogItem(
+                    imageUrl: 'assets/images/nuclear_f.jpg',
+                    title:
+                        'Qardho is building a nuclear station in 2024 for electrical energy and making very fast',
+                    date: '01 Jun 2024',
+                    readTime: '10 min read',
                   ),
-                  const SizedBox(
-                    width: 20,
+                  BlogItem(
+                    imageUrl: 'assets/images/airplane_2.jpg',
+                    title:
+                        'Diyaarad laga leeyahay qoryacad oo kusoo dhacday wadanka yemen gaar ahaan sanca',
+                    date: '01 Jun 2024',
+                    readTime: '23 min read',
                   ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Qardho is build a nuclear station in \n2024 for electrical energy',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 22,
-                        ),
-                        // other
-                        Row(
-                          children: [
-                            // calender
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/images/svg/calendar.svg',
-                                  color: Colors.black45,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                const Text(
-                                  '01 Jan 2024',
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            // readers
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/images/svg/time.svg',
-                                  color: Colors.black45,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                const Text(
-                                  '10 min read',
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-
-            // blog2
-            Container(
-              child: Row(
-                children: [
-                  ClipRRect(
-                    // borderRadius: BorderRadius.only(topLeft: Radius.zero),
-                    child: Image.asset(
-                      'assets/images/airplane_2.jpg',
-                      width: 120,
-                      height: 120,
-                    ),
+                  BlogItem(
+                    imageUrl: 'assets/images/nuclear.jpg',
+                    title:
+                        'Quraanjo oo markii ugu horeysay isticmaashay hubka sida xun wax ulaaya ee nuclear',
+                    date: '01 Jun 2024',
+                    readTime: '120 min read',
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Qardho is build a nuclear station in \n2024 for electrical energy',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 22,
-                        ),
-                        // other
-                        Row(
-                          children: [
-                            // calender
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/images/svg/calendar.svg',
-                                  color: Colors.black45,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                const Text(
-                                  '01 Jan 2024',
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            // readers
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/images/svg/time.svg',
-                                  color: Colors.black45,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                const Text(
-                                  '10 min read',
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            // blog3
-            Container(
-              child: Row(
-                children: [
-                  ClipRRect(
-                    // borderRadius: BorderRadius.only(topLeft: Radius.zero),
-                    child: Image.asset(
-                      'assets/images/nuclear.jpg',
-                      width: 120,
-                      height: 120,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Qardho is build a nuclear station in \n2024 for electrical energy',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 22,
-                        ),
-                        // other
-                        Row(
-                          children: [
-                            // canlender
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/images/svg/calendar.svg',
-                                  color: Colors.black45,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                const Text(
-                                  '01 Jan 2024',
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            // readers
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/images/svg/time.svg',
-                                  color: Colors.black45,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                const Text(
-                                  '10 min read',
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class HeaderSection extends StatelessWidget {
+  const HeaderSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'Said Dani',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+            fontSize: 20,
+          ),
+        ),
+        Row(
+          children: [
+            SvgPicture.asset(
+              'assets/images/svg/sun.svg',
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SvgPicture.asset(
+              'assets/images/svg/search.svg',
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class TitleSection extends StatelessWidget {
+  const TitleSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Breaking News',
+      style: TextStyle(
+        fontSize: 40,
+        fontWeight: FontWeight.bold,
+        color: Theme.of(context).colorScheme.primary,
+      ),
+    );
+  }
+}
+
+class MainBlog extends StatelessWidget {
+  const MainBlog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+          child: Image.asset('assets/images/airplane_1.jpg'),
+        ),
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            'Contact Lost with Air Boeing 737-500 After Take Off',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              color: Theme.of(context).colorScheme.primary,
+              wordSpacing: 2,
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        const MainBlogUserInfo(),
+      ],
+    );
+  }
+}
+
+class MainBlogUserInfo extends StatelessWidget {
+  const MainBlogUserInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Row(
+            children: [
+              const CircleAvatar(
+                backgroundImage: AssetImage('assets/images/profile_image.jpg'),
+                radius: 17,
+              ),
+              const SizedBox(width: 15),
+              Text(
+                'BBC Somalia',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Text(
+          '01 Jun 2024',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class FilterSection extends StatelessWidget {
+  const FilterSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'All',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          'Palestine',
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).colorScheme.secondary,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          'Media',
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).colorScheme.secondary,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          'Magazine',
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).colorScheme.secondary,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          'Business',
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).colorScheme.secondary,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class BlogItem extends StatelessWidget {
+  final String imageUrl;
+  final String title;
+  final String date;
+  final String readTime;
+
+  const BlogItem({
+    required this.imageUrl,
+    required this.title,
+    required this.date,
+    required this.readTime,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              imageUrl,
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                const SizedBox(height: 25),
+                Row(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/svg/calendar.svg',
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          date,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 20),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/svg/time.svg',
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          readTime,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
