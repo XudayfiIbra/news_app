@@ -1,6 +1,7 @@
 # News app
 
 ## Download the app here
+#### 🚀 For Andriod
 [News app](https://github.com/XudayfiIbra/news_app/raw/main/Products/app-release.apk)
 
 ## Screenshots
