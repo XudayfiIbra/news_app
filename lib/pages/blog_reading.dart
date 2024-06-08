@@ -33,7 +33,7 @@ class ReadingPage extends StatelessWidget {
         padding: const EdgeInsets.only(
           left: 20,
           right: 20,
-          top: 20,
+          top: 10,
         ),
         child: Column(
           children: [
@@ -42,7 +42,7 @@ class ReadingPage extends StatelessWidget {
               child: Image.asset('assets/images/airplane_1.jpg'),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Text(
               'Contact Lost with Air Boeing 737-500 After Take Off',
@@ -55,7 +55,7 @@ class ReadingPage extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             // user info
             Row(
@@ -147,9 +147,9 @@ class ReadingPage extends StatelessWidget {
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
-                      suffixIcon: const Icon(
+                      suffixIcon: Icon(
                         Icons.send,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                     ),
                   ),

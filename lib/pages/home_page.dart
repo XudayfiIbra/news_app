@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_app/theme/Toggle.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -78,9 +80,15 @@ class HeaderSection extends StatelessWidget {
         ),
         Row(
           children: [
-            SvgPicture.asset(
-              'assets/images/svg/sun.svg',
-              color: Theme.of(context).colorScheme.secondary,
+            GestureDetector(
+              onTap: () {
+                Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                print('tap');
+              },
+              child: SvgPicture.asset(
+                'assets/images/svg/sun.svg',
+                color: Theme.of(context).colorScheme.secondary,
+              ),
             ),
             const SizedBox(
               width: 10,

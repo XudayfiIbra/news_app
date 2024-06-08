@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:news_app/theme/theme.dart';
 
 class ThemeProvider with ChangeNotifier {
-  ThemeData _themeData = dark;
+  ThemeData _themeData = light;
 
   ThemeData get themeData => _themeData;
 
-  set themeData(ThemeData themData) {
+  set themeData(ThemeData themeData) {
     _themeData = themeData;
     notifyListeners();
   }
 
-  void toggleColor() {
+  void toggleTheme() {
     if (_themeData == light) {
       themeData = dark;
     } else {
